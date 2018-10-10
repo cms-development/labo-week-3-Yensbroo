@@ -1,7 +1,35 @@
+<button class="mt-3" (click)="goBack()">Terug</button>
 <div class="recipe">
-  <h1>{{recipe.id}}</h1>
-  <h4>{{recipe.cuisine}}</h4>
-  <ul>
-    <li *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</li>
-  </ul>
+  <div class="row">
+    <div class="col-lg-6">
+      <img [src]="recipe?.acf.image1?.url" alt="" class="img-fluid">
+    </div>
+    <div class="col-lg-6">
+      <div class="row">
+        <h3>{{recipe?.title.rendered}}</h3>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 d-flex h-25 justify-content-center align-items-center">
+          <p *ngIf="!recipe?.acf.alcohol">Non-alcoholisch</p>
+          <p *ngIf="recipe?.acf.alcohol">Alcoholisch</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-lg-12">
+      <p>{{recipe?.meta_fields._recipe_subtitle}}</p>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-3">
+      <h4>Ingrediënten:</h4>
+      <div [innerHTML]="recipe?.meta_fields._recipe_ingredients"></div>
+    </div>
+    <div class="col-lg-9">
+      <h4>Recept:</h4>
+      <div [innerHTML]="recipe?.content.rendered"></div>
+    </div>
+  </div>
 </div>

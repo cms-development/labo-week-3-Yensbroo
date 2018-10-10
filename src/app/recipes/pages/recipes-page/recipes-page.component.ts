@@ -7,12 +7,6 @@ import { Recipe } from "../../../models/recipe";
   styleUrls: ["./recipes-page.component.css"]
 })
 export class RecipesPageComponent implements OnInit {
-  recipe: Recipe = {
-    id: 1,
-    cuisine: "Hoofdgerecht",
-    ingredients: []
-  };
-
   constructor() {}
 
   ngOnInit() {}

@@ -1,19 +1,20 @@
 import { Injectable } from "@angular/core";
-import { RECIPES } from "../data/mock-recipes";
 import { Recipe } from "../models/recipe";
 import { Observable, of } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class RecipeService {
-  constructor() {}
+  apiURL = "https://yensbroo.cmsdevelopment.be/wp-json/wp/v2/recipes-api";
+  constructor(private http: HttpClient) {}
 
-  getRecipes(): Observable<Recipe[]> {
-    return of(RECIPES);
+  getRecipes(): Observable<any> {
+    return this.http.get(this.apiURL);
   }
 
-  getRecipe(id: number): Observable<Recipe> {
-    return of(RECIPES.find(recipe => recipe.id === id));
+  getRecipe(id): Observable<any> {
+    return this.http.get(this.apiURL + "/" + id);
   }
 }

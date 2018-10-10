@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { RECIPES } from "../../../data/mock-recipes";
 import { Recipe } from "../../../models/recipe";
 import { RecipeService } from "src/app/services/recipe.service";
 
@@ -18,8 +17,12 @@ export class RecipesListComponent implements OnInit {
   }
 
   getRecipes() {
+    // this.recipeService.getRecipes().subscribe(recipes => {
+    //   this.recipes = recipes;
+    // });
     this.recipeService.getRecipes().subscribe(recipes => {
       this.recipes = recipes;
+      console.log(recipes);
     });
   }
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { RECIPES } from "../../../data/mock-recipes";
 import { RecipeService } from "src/app/services/recipe.service";
 import { ActivatedRoute } from "@angular/router";
 import { Recipe } from "src/app/models/recipe";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-recipe-detail",
@@ -13,7 +13,8 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   constructor(
     private recipeService: RecipeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -25,5 +26,9 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.getRecipe(id).subscribe(recipe => {
       this.recipe = recipe;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

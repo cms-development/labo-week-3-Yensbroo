@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-lg-3 mb-3" *ngFor="let recipe of recipes">
     <div class="recipe-card">
-      <a [routerLink]="[ '/recept', recipe.id]">{{recipe.id}}</a>
-      <p>{{recipe.cuisine}}</p>
+      <img [src]="recipe?.acf.image1?.url" alt="" class="img-fluid mb-3">
+      <a [routerLink]="[ '/recept', recipe.id]">{{recipe.title.rendered}}</a>
+      <p></p>
     </div>
   </div>
 </div>
